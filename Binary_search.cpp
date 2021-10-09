@@ -14,7 +14,7 @@ int main()
     cout<<"Enter element"<<endl;
     cin>>ele; 
     int first=0,last=n;
-    for(int i=first; i<last;i++)
+    while(first<=last)
     {
         int mid= (first+last)/2;
         if(a[mid]==ele)
