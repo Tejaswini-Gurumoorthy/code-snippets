@@ -86,3 +86,48 @@ class stack
 
 
 };
+void inf_to_post(string s)
+{
+    stack stk;
+    char output[s.length()+1];
+    int i,j=0;
+
+    for(i=0;i<s.length();i++)
+    {
+        if((s[i]>='a'&&s[i]<='z')||(s[i]>='A'&&s[i]<='Z'))
+        {
+            output[j++]=s[i];
+        }
+        else if(s[i]=='(')
+        {
+            stk.push(s[i]);
+        }
+        else if(s[i]==')')
+        {
+            while(stk.gettop()!='(')
+            {
+                output[j++]=stk.pop();
+            }
+            stk.pop();
+        }
+        else 
+        {
+            while((!stk.isEmpty())&&(priority(s[i])<=priority(stk.gettop())))
+            {
+                output[j++]=stk.gettop();
+                stk.pop();
+            }
+            stk.push(s[i]);
+           
+        }
+    }
+
+    while(!stk.isEmpty())
+    {
+        output[j++]=stk.gettop();
+        stk.pop();
+    }
+    output[j]='\0';
+
+    cout<<output<<endl;
+}
