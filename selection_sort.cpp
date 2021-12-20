@@ -1,36 +1,39 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<string.h>
+#include<stdio.h>
 using namespace std;
 
 int main()
 {
     int n;
     cin>>n;
-    int a[n];
+    int arr[n],idx;
+    cout<<"Enter array elements : "<<endl;
     for(int i=0;i<n;i++)
     {
-        cin>>a[i];
-    }   
-    int min,temp,pos;
-    for(int i=0;i<n;i++)
-    {
-        min=a[i];
-        for(int j=i+1;j<n;j++)
-        {
-            if(a[j]<min)
-            {
-                min=a[j];
-                pos=j;
-            }
-
-        }
-        temp= a[pos]; 
-        a[pos]=a[i];
-        a[i]=temp;
+        cin>>arr[i];
     }
-    cout<<"THE SORTED ARRAY IS: ";
-    for(int i=0;i<n;i++)
+    int temp;
+    for(int i=0;i<n-1;i++)
     {
-        cout<<a[i]<<" ";
+        idx=i;
+        for(int j=i;j<5;j++)
+        {   
+            if(arr[j]<arr[idx])
+            {
+                idx=j;
+            }
+        }
+        temp=arr[idx];
+        arr[idx]=arr[i];
+        arr[i]=temp;
+    }
+    for(int i=0;i<5;i++)
+    {
+        cout<<arr[i]<<" ";
     }
     cout<<endl;
+
+
 }
+
