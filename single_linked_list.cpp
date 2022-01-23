@@ -46,9 +46,10 @@ public:
     void insertAtBeg(int x)
     {
         Node *newNode = new Node(x);
-        Node *temp = head;
-        head = newNode;
-        newNode->next = temp;
+     /*   Node *temp = head;
+        head = newNode;*/
+        newNode->next = head;
+        head =newNode;
     }
 
     void insertBeforeEle(int x, int ele)
