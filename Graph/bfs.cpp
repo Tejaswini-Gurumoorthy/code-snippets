@@ -6,25 +6,25 @@ bool vis[N] = {0};
 
 void bfs(int start)
 {
-    bool enqueued[N] = {0};
-    queue<int> q;
-    q.push(start);
-    enqueued[start] = 1;
-    cout << q.back();
+    bool enqueued[N] = {0}; //to keep track if the element s enqueued or not
+    queue<int> q; 
+    q.push(start);//pushing the starting vertex inside queue
+    enqueued[start] = 1; //starting vertex now inside the queue
+    cout << q.back(); //printing the stating vertex
 
     while (!q.empty())
     {
-        for (auto child : g[q.front()])
+        for (auto child : g[q.front()]) //front= whichever came first
         {
             if (enqueued[child] == 0)
             {
                 q.push(child);
                 enqueued[child] = true;
-                cout << q.back()<<" ";
+                cout << q.back()<<" ";//printing the order in which it is enqueued
             }
         }
-        vis[q.front()] = true;
-        q.pop();
+        vis[q.front()] = true;//marking visited when all its children are enqueued
+        q.pop();//and finally popping it out
     }
     return;
 }
