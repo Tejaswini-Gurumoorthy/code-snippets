@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define N 100
+vector<int>g[N];
+int cnt=0;
+
+void no_of_paths(int src,int dest)
+{
+    //before iterating thru the children
+    for(auto child: g[src])
+    {
+        if(src==dest)
+        {
+            cout<<cnt++<<endl;
+            return;
+        }
+        no_of_paths(child,dest);
+    }
+    return;
+
+}
+int main()
+{
+    int n, m,src,dest;
+    cout << "Enter number of vertices and edges : " << endl;
+    cin >> n >> m;
+   
+    cout << "Enter the graph : " << endl;
+    for (int i = 0; i < m; i++)
+    {
+        int v1, v2;
+        cin >> v1 >> v2;
+        g[v1].push_back(v2);
+    }
+    cout<<"Enter source : "<<endl;
+    cin>>src;
+    cout<<"Enter destination : "<<endl;
+    cin>>dest;
+    no_of_paths(src,dest);
+    
+}
